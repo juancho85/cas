@@ -1,0 +1,6 @@
+cas:
+    server:
+        name: https://cas:8443
+        prefix: ${cas.server.name}
+logging:
+    config: file:/etc/cas/config/log4j2.xml
