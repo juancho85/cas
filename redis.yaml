@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  redis:
+    container_name: redis-cas
+    image: redis:4.0.6
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--requirepass", "redis"]
