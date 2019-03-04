@@ -25,3 +25,17 @@ cd cas-overlay
 * Check with the dummy credentials that you can log-in:
     * username: casuser
     * password: Mellon
+* Launch LDAP test server [Base image](https://github.com/osixia/docker-openldap)
+```
+docker-compose -f ldap.yaml up
+```
+* Connect to the container and check that it is running
+```
+docker container exec -it ldap bash
+ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin
+```
+or installing ldap-utils from the host
+```
+sudo apt install ldap-utils
+ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin
+```

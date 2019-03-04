@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  ldap:
+    container_name: ldap
+    image: osixia/openldap:1.2.3
+    ports:
+      - "389:389"
+      - "636:636"
