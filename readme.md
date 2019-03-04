@@ -15,3 +15,13 @@ cd ..
 mkdir cas-overlay
 rsync -r cas-overlay-template/ cas-overlay/ --exclude .git
 ```
+* Test the build (put thekeystore present in /cas-overlay/etc/cas at /etc/cas/ or generate a new one)
+```
+cd cas-overlay
+./build.sh package
+./build.sh run
+```
+* Check that the service is running: https://localhost:8443/cas
+* Check with the dummy credentials that you can log-in:
+    * username: casuser
+    * password: Mellon
