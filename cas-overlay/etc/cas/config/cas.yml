@@ -2,5 +2,38 @@ cas:
     server:
         name: https://cas:8443
         prefix: ${cas.server.name}/cas
+    serviceRegistry:
+        watcherEnabled: true
+        initFromJson: true
+        json:
+            location: file:/etc/cas/services
+    authn:
+        ldap:
+            - type: AUTHENTICATED
+              ldapUrl: ldaps://ldap1.example.org
+              baseDn: dc=example,dc=org
+              searchFilter: cn={user}
+              bindDn: cn=admin,dc=example,dc=org
+              bindCredential: admin
+              principalAttributeList: memberOf,cn,givenName,mail
+    ticket:
+        registry:
+            redis:
+                crypto:
+                    alg: AES
+                    enabled: true
+                    encryption:
+                        key: HQsd3njA3MgHi4Jna1aEig
+                        keySize: 16
+                    signing:
+                        key: f8Dxuy7ltk6_ZzNSxmy4x_43EPTAo6e5R_bYcxAFa3_3qmHAxGawVEg_gixI7UXcX2rcfa-4z6icNRTdh7JW7Q
+                        keySize: 512
+                database: 0
+                host: redis
+                password: redis
+                port: 6379
+                timeout: 120
+                usePool: true
+                useSsl: false
 logging:
     config: file:/etc/cas/config/log4j2.xml
